@@ -1,0 +1,52 @@
+package com.tujuhsembilan.tokomadura.models;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import jakarta.persistence.*;
+
+import java.util.Date;
+
+@Entity
+@Table(name = "customers")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id")
+    private Long customerId;
+
+    @Column(name = "customer_address")
+    private String customerAddress;
+
+    @Column(name = "customer_order")
+    private String customerOrder;
+
+    @Column(name = "customer_name")
+    private String customerName;
+
+    @Column(name = "customer_phone")
+    private String customerPhone;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
+
+    @Column(name = "last_order_date")
+    private Date lastOrderDate;
+
+    @Column(name = "pic")
+    private String pic;
+
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "role", nullable = false)
+    private Short role;
+}
