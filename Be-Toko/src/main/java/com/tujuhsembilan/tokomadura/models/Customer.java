@@ -1,19 +1,29 @@
 package com.tujuhsembilan.tokomadura.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.tujuhsembilan.tokomadura.utils.Constant.CommonConstant.UsersConstant;
 
 @Entity
 @Table(name = "customers")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Customer {
+public class Customer implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,5 +58,17 @@ public class Customer {
     private String password;
 
     @Column(name = "role", nullable = false)
-    private Short role;
+    private Integer role;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(UsersConstant.isRole(role)));
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    
 }

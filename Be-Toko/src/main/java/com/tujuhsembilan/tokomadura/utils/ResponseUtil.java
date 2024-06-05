@@ -5,7 +5,7 @@ import com.tujuhsembilan.tokomadura.utils.Constant.CommonConstant.ErrorCodeConst
 
 public class ResponseUtil {
     
-    public ResponseUtil79 success(String message){
+    public static ResponseUtil79 success(String message){
         return ResponseUtil79.builder()
             .errorCode(ErrorCodeConstant.SUCCESS)
             .message(message)
@@ -13,7 +13,7 @@ public class ResponseUtil {
             .build();
     }
 
-    public ResponseUtil79 success(String message, Object result){
+    public static ResponseUtil79 success(String message, Object result){
         return ResponseUtil79.builder()
             .errorCode(ErrorCodeConstant.SUCCESS)
             .message(message)
@@ -21,7 +21,7 @@ public class ResponseUtil {
             .build();
     }
 
-    public ResponseUtil79 failed(String message){
+    public static ResponseUtil79 failed(String message){
         return ResponseUtil79.builder()
             .errorCode(ErrorCodeConstant.ERROR)
             .message(message)
@@ -29,7 +29,7 @@ public class ResponseUtil {
             .build();
     }
 
-    public ResponseUtil79 failed(String message, Object result){
+    public static ResponseUtil79 failed(String message, Object result){
         return ResponseUtil79.builder()
             .errorCode(ErrorCodeConstant.ERROR)
             .message(message)
